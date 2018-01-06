@@ -1,0 +1,114 @@
+.center {
+	text-align: center;
+}
+.left {
+	text-align: left;
+}
+.right {
+	text-align: right;
+}
+.top {
+	vertical-align: top;
+}
+img.right {
+	float: right;
+}
+div.rule {
+	border: thin solid white; border-image: none;
+}
+blockquote {
+	border: thin solid white; border-image: none;
+}
+table.frame {
+	border: thin solid white; border-image: none;
+}
+th.hr {
+	border: thin solid silver; border-image: none;
+}
+td.hr {
+	border: thin solid silver; border-image: none;
+}
+body {
+	font: 100%/normal sans-serif; font-size-adjust: none; font-stretch: normal;
+}
+h1 {
+	font: bold 200%/normal serif; font-size-adjust: none; font-stretch: normal;
+}
+h2 {
+	font: bold 120%/normal serif; font-size-adjust: none; font-stretch: normal;
+}
+h3 {
+	font: bold 100%/normal serif; font-size-adjust: none; font-stretch: normal;
+}
+div {
+	font: 100%/140% sans-serif; font-size-adjust: none; font-stretch: normal;
+}
+pre {
+	font: 100%/100% monospace; font-size-adjust: none; font-stretch: normal;
+}
+table {
+	font: bold 100%/normal sans-serif; text-align: left; font-size-adjust: none; font-stretch: normal;
+}
+table.rule {
+	font: 100%/140% sans-serif; font-size-adjust: none; font-stretch: normal;
+}
+table.number {
+	font: bold 100%/normal monospace; text-align: right; font-size-adjust: none; font-stretch: normal;
+}
+caption {
+	font: bold 100%/normal serif; font-size-adjust: none; font-stretch: normal;
+}
+col.number {
+	font: bold 100%/normal monospace; text-align: right; font-size-adjust: none; font-stretch: normal;
+}
+col.kanji {
+	font: 140%/140% monospace; vertical-align: top; font-size-adjust: none; font-stretch: normal;
+}
+col.gothic {
+	font: 100%/normal monospace; vertical-align: top; font-size-adjust: none; font-stretch: normal;
+}
+col.yomi {
+	font: 100%/normal sans-serif; font-size-adjust: none; font-stretch: normal;
+}
+th {
+	font: bold 100%/normal serif; text-align: center; vertical-align: middle; font-size-adjust: none; font-stretch: normal;
+}
+tr.gothic {
+	font: 100%/normal monospace; vertical-align: top; font-size-adjust: none; font-stretch: normal;
+}
+dt {
+	font: bold 100%/normal serif; font-size-adjust: none; font-stretch: normal;
+}
+.aqua {
+	background: aqua;
+}
+.fuchsia {
+	background: fuchsia;
+}
+.lime {
+	background: lime;
+}
+.red {
+	background: red;
+}
+.yellow {
+	background: yellow;
+}
+em.blue {
+	background: none; color: blue; font-style: normal;
+}
+em.red {
+	background: none; color: red; font-style: normal;
+}
+em.green {
+	background: none; color: green; font-style: normal;
+}
+body {
+	background: black; color: white;
+}
+a:link {
+	color: yellow;
+}
+a:visited {
+	color: aqua;
+}

@@ -1,0 +1,27 @@
+body {
+	background: rgb(224, 255, 224); color: black;
+}
+.rule {
+	background: rgb(255, 255, 224); color: inherit;
+}
+table {
+	background: rgb(224, 255, 255); color: inherit;
+}
+h3 {
+	background: navy; color: white;
+}
+div.rule {
+	border: thin solid black; border-image: none;
+}
+table.frame {
+	border: thin solid gray; border-image: none;
+}
+dt {
+	background: inherit; color: green;
+}
+a:link {
+	background: inherit; color: blue;
+}
+a:visited {
+	background: inherit; color: purple;
+}

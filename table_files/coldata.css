@@ -1,0 +1,39 @@
+.lgreen {
+	background: rgb(192, 255, 192); color: inherit;
+}
+body {
+	background: rgb(224, 255, 224); color: black;
+}
+.rule {
+	background: rgb(255, 255, 224); color: inherit;
+}
+table {
+	background: rgb(224, 255, 255); color: inherit;
+}
+blockquote {
+	background: rgb(224, 224, 224); color: inherit;
+}
+div.rule {
+	border: thin solid black; border-image: none;
+}
+blockquote {
+	border: thin solid black; border-image: none;
+}
+table.frame {
+	border: thin solid gray; border-image: none;
+}
+h1 {
+	background: aqua; color: navy;
+}
+dt {
+	background: inherit; color: green;
+}
+caption {
+	color: navy;
+}
+a:link {
+	background: inherit; color: blue;
+}
+a:visited {
+	background: inherit; color: purple;
+}

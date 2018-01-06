@@ -1,0 +1,335 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0052)http://jgrammar.life.coocan.jp/ja/tools/codeval0.htm -->
+<!--?xml version="1.0" encoding="UTF-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+lang="ja" lang="ja" xml:lang="ja" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<META http-equiv="Content-Style-Type" content="text/css; charset=utf-8"> 
+<META http-equiv="Content-Script-Type" content="text/javascript; charset=utf8"> 
+<META name="keywords" content="文字符号値参照ツール"> <TITLE>文字符号値参照ツール 
+[JavaScript版]</TITLE> <LINK href="validator_files/jacolumn.css" rel="stylesheet" 
+type="text/css"> <LINK href="validator_files/coltools.css" rel="stylesheet" 
+type="text/css"> <LINK href="../../css/ruby.css" rel="stylesheet" type="text/css"> 
+<SCRIPT src="validator_files/codedat.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="validator_files/codeval.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">function onKeyPress() { /* TBD */ }</SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18860"></HEAD> 
+<BODY>
+<P>■[<A 
+href="javascript:window.open( 'biframe.htm#codeval0.htm', '_top' );">フレーム環境</A>] 
+■[<A href="javascript:window.open( '../../ja/index.htm',   '_top' );">目次</A>]  
+</P>
+<H3>文字符号値参照道具 [JavaScript版] </H3>
+<DIV class="rule">
+<FORM action="no_action">
+<P><STRONG>■符号値→文字:</STRONG> <BR><SELECT name="Encode" onchange="javascript:setEncodingInitialValue( this.form );"><OPTION>UTF-32</OPTION>
+  	 <OPTION>UTF-16</OPTION>	 <OPTION selected="selected">UTF-8</OPTION>
+  	 <OPTION>Shift_JIS</OPTION>	 <OPTION>EUC-JP</OPTION>
+  	 <OPTION>EUC-JISX0213</OPTION>	 <!-- <option>ISO-2022-JP</option> --> </SELECT>
+ 16進数:<INPUT name="Hexdump" value="E4 BA 9C"> <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:inputHexDump( this.form );" type="button" value="↓文字入力"> 
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:outputCombination( this.form );" type="button" value="↓合成文字参照"> 
+<BR><STRONG>■文字→符号値:</STRONG> <INPUT name="ExSpace" type="checkbox" checked="checked" 
+value="">空白・制御文字を除外する 
+<BR><TEXTAREA name="Area0" rows="5" cols="80">入力領域</TEXTAREA> <BR><INPUT name="UTF32" 
+type="checkbox" value="">UTF-32 <INPUT name="UTF16" type="checkbox" checked="checked" 
+value="">UTF-16 <INPUT name="UTF8" type="checkbox" checked="checked" 
+value="">UTF-8 <INPUT name="SJIS" type="checkbox" checked="checked" 
+value="">Shift_JIS <INPUT name="EUCJP" type="checkbox" checked="checked" value="">EUC-JP 
+<INPUT name="EJ213" type="checkbox" checked="checked" value="">EUC-JISX0213 
+<INPUT name="ISOJP" type="checkbox" value="">ISO-2022-JP <BR><INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:outputHexDump( this.form );" type="button" value="↓符号値参照"> 
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:this.form.Area0.value='';" type="button" value="↑消去"> 
+文字サイズ: <SELECT name="Fsize"><OPTION>xx-large</OPTION>
+  	 <OPTION>x-large</OPTION>	 <OPTION>large</OPTION>	 <OPTION selected="selected">medium</OPTION>
+  	 <OPTION>small</OPTION>	 <OPTION>x-small</OPTION>	 <OPTION>xx-small</OPTION> 
+</SELECT> 文字色: <SELECT name="Fcolor"><OPTION 
+  selected="selected">black</OPTION>	 <OPTION>silver</OPTION>
+  	 <OPTION>gray</OPTION>	 <OPTION>white</OPTION>	 <OPTION>red</OPTION>
+  	 <OPTION>fuchsia</OPTION>	 <OPTION>lime</OPTION>	 <OPTION>yellow</OPTION>
+  	 <OPTION>blue</OPTION>	 <OPTION>aqua</OPTION> </SELECT> 背景色: <SELECT name="Bcolor"><OPTION>black</OPTION>
+  	 <OPTION>silver</OPTION>	 <OPTION>gray</OPTION>	 <OPTION 
+  selected="selected">white</OPTION>	 <OPTION>maroon</OPTION>
+  	 <OPTION>purple</OPTION>	 <OPTION>green</OPTION>	 <OPTION>olive</OPTION>
+  	 <OPTION>navy</OPTION>	 <OPTION>teal</OPTION> </SELECT> </P></FORM></DIV>
+<HR>
+<!-- _______________________________________ --> 
+<H3>使い方</H3>
+<DIV class="rule">
+<DL>
+  <DT>符号値→文字</DT>
+  <DD>
+  <P>希望の符合値を選択して、16進数表記で数字を入力すると、		 それに対応した文字が、その下の文字入力領域に反映される。
+  		数文字分まとめて入力することも可能で、		 その場合、途中にいれた空白文字は無視される。		文字符号によっては、変換表を再構築するので、
+  		最初の実行時に処理が遅くなるが、		二回目からは通常の速度に戻る。		 </P></DD>
+  <DT>文字→符号値</DT>
+  <DD>
+  <P>文字を入力して、調べたい符号化を選び、好みの文字属性を選ぶことで、		 それらの文字に対応する符号値を 16進数表記で、
+  		表として下の領域に出力する。		 </P></DD></DL></DIV>
+<HR>
+<!-- _______________________________________ --> 
+<H3>解説</H3>
+<DIV class="rule">
+<H4>文字集合 ( Coded Character Set )</H4>
+<P>日本語を表記するための文字集合として、次のものがある。 </P>
+<DL>
+  <DT>Unicode</DT>
+  <DD>
+  <P>16進数で 0 ～ 10FFFF の範囲に約100万字分の文字領域を確保して、		全世界の文字を扱えるようにしたもの。実際には 
+  10万字程度が定義されている。		 </P></DD>
+  <DT>JIS X 0201 ( JISローマ字、JISカタカナ )</DT>
+  <DD>
+  <P>16進数で 0x21 ～ 0x7E の 94文字の範囲にローマ字、		数字、記号など割り当てた<STRONG>JISローマ字</STRONG>と、
+  		同じく 0x21 ～ 0x5F の 64文字の範囲に、		濁点などを分離した片仮名を割り当てた<STRONG>JISカタカナ</STRONG>からなる。
+  		 </P></DD>
+  <DT>JIS X 0208 ( 第一水準、第二水準 )</DT>
+  <DD>
+  <P>94 * 94 = 8836 の領域に、英数字、ひらがな、カタカナ、		使用頻度の高い漢字、記号などを収めたもの。		実際に定義されているのは 
+  6500字程度である。		 JIS第一水準、JIS第二水準とも呼ばれる。		 1978年に制定されて(制定時は別の名前であったが) 
+  1983年に大幅改訂を経て、		 その後、1990年、1997年に若干の調整を経て現在にいたる。		 </P></DD>
+  <DT>JIS X 0212 ( 補助漢字 )</DT>
+  <DD>
+  <P>同じく 94 * 94 = 8836 の領域に、		 JIS X 0208 に入らなかった補助用の漢字と、		 アクセント記号付きの英字を収めたもの。
+  		実際に定義されているのは6500字程度である。		俗に JIS補助漢字と呼ばれている。		 1990年に制定された。		 </P></DD>
+  <DT>JIS X 0213 ( 第三水準、第四水準 )</DT>
+  <DD>
+  <P>94 * 94 = 8836 の領域を二つ用意し、		 JIS X 0208 に入らなかった現代生活に必要な漢字や記号を収めたもの。		 JIS X 
+  0212 とは別個に制定されたので、重複もある。		 JIS X 0208 との対比から、
+  		新しく定義された文字は、JIS第三水準、JIS第四水準とも呼ばれる。		 JIS X 0213 は、JIS X 0208 
+  を包含し、11000字程度が定義されている。		 2000年に制定され、2004年に改訂されて現在にいたる。		 </P></DD>
+  <DT>Windows拡張文字</DT>
+  <DD>
+  <P>JIS X 0208 に含まれなかった使用頻度の高い文字を		 IBM、NEC、マイクロソフトなどのベンダーが JIS X 0208 の
+  		 空き領域に割り当てて、通用するようになったもの。		 Windows の普及で定着した。		 </P></DD></DL>
+<H4>文字符号 ( Character Encoding Scheme )</H4>
+<P>日本語を表記するための文字符号として、次のものがある。 </P>
+<DL>
+  <DT>UTF-32</DT>
+  <DD>
+  <P>Unicode の文字集合を 32bit で表現したもの。		 Unicode 番号と UTF-32 の符号位置は一致する。		 </P></DD>
+  <DT>UTF-16</DT>
+  <DD>
+  <P>Unicode の文字集合を 16bit の組み合わせで表現したもの。		 16bit では 65000字程度しか表現できないので、
+  		 Unicode の全文字数 約100万字を表現するためには、		 16bit を二つ組み合わせる必要がある。		 16bit の Unicode 
+  番号で表わす使用頻度の高い文字と、		 16bit を二つ並べて表わす使用頻度の低い文字からなる。		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>Unicode番号と UTF-16 の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>範囲</TH>
+      <TH>UTF-32</TH>
+      <TH>UTF-16</TH></TR>
+    <TR>
+      <TD>U+0000 - U+FFFF</TD>
+      <TD>00000000 00000000 xxxxxxxx xxxxxxxx</TD>
+      <TD>xxxxxxxx xxxxxxxx</TD></TR>
+    <TR>
+      <TD>U+10000 - U+10FFFF</TD>
+      <TD>00000000 000wwwww yyyyyyzz zzzzzzzz</TD>
+      <TD>110110uu uuyyyyyy 110111zz zzzzzzzz</TD></TR></TBODY></TABLE><BR>
+  <UL>
+    <LI>wwwww = uuuu + 1 の関係にある。			 </LI>
+    <LI>U+D800 - U+DFFF の範囲は制御用(Surrogate)として使用され、				単独では使用できない。
+  			 </LI></UL><BR></DD>
+  <DT>UTF-8</DT>
+  <DD>
+  <P>Unicode の文字集合を 8bit = 1バイトの組み合わせで表現したもの。		単一の文字に必要とされるバイトの数は、1から4までと可変である。
+  		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>Unicode番号と UTF-8 の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>範囲</TH>
+      <TH>UTF-32</TH>
+      <TH>UTF-8</TH></TR>
+    <TR>
+      <TD>U+0000 - U+007F</TD>
+      <TD>00000000 00000000 00000000 0xxxxxxx</TD>
+      <TD>0xxxxxxx</TD></TR>
+    <TR>
+      <TD>U+0080 - U+07FF</TD>
+      <TD>00000000 00000000 00000xxx xxyyyyyy</TD>
+      <TD>110xxxxx 10yyyyyy</TD></TR>
+    <TR>
+      <TD>U+0800 - U+FFFF</TD>
+      <TD>00000000 00000000 xxxxyyyy yyzzzzzz</TD>
+      <TD>1110xxxx 10yyyyyy 10zzzzzz</TD></TR>
+    <TR>
+      <TD>U+10000 - U+10FFFF</TD>
+      <TD>00000000 000xxxyy yyyyzzzz zzwwwwww</TD>
+      <TD>11110xxx 10yyyyyy 10zzzzzz 10wwwwww</TD></TR></TBODY></TABLE><BR>
+  <UL>
+    <LI>U+D800 - U+DFFF の範囲は制御用(Surrogate)として使用され、				単独では使用できない。			 </LI>
+    <LI>U+0000 - U+007F の範囲は US ASCII と透過的に交換できる。</LI></UL><BR></DD>
+  <DT>Shift_JIS</DT>
+  <DD>
+  <P>JISローマ字、JISカタカナ、		 JIS X 0208 を 8bit = 1バイトの組み合わせで表現したもの。		 JISローマ字を 1バイトで 
+  0 ～ 7F までの領域に割り当て、		 JISカタカナを 1バイトで A1 ～ DF までの領域に割り当て、		 JIS X 0208 を、		 JIS 
+  ローマ字と JISカタカナ で使用される領域を避けて 2バイトで表現したものである。		 また、Windows拡張文字を含める場合もある。		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>各文字集合と Shit_JIS の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>文字集合       </TH>
+      <TH>1バイト目         </TH>
+      <TH>2バイト目         </TH></TR>
+    <TR>
+      <TD>JISローマ字    </TD>
+      <TD>00 ～ 7F          </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JISカタカナ    </TD>
+      <TD>A1 ～ DF          </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0208     </TD>
+      <TD>81 ～ 9F, E0 ～ EF</TD>
+      <TD>40 ～ 7E, 80 ～ FC</TD></TR>
+    <TR>
+      <TD>Windows拡張文字</TD>
+      <TD>F0 ～ FC          </TD>
+      <TD>40 ～ 7E, 80 ～ FC</TD></TR></TBODY></TABLE><BR>
+  <UL>
+    <LI>Windows拡張文字は、1バイト目に JIS X 0208 では未定義領域に当たる 87、				 ED ～ EF を使用する場合もある。
+    			 </LI></UL><BR></DD>
+  <DT>ISO-2022-JP</DT>
+  <DD>
+  <P>JISローマ字、JIS X 0208 を 7bit の組み合わせで表現したもの。		 7bit 
+  だけで表現するために、ビットパターンの組み合わせが少なく、		各文字集合の切り替えに数文字分の制御文字列を必要とする。		 JISカタカナは使わない。
+  		 また、JISローマ字と似た文字集合として US ASCII という文字集合も使えるので、		 この符号化で、英数字を表わす場合は通常 US ASCII 
+  として扱う。		 ただし、JISローマ字と US ASCII で異なる、二文字「￥」と「～」		 を明示するときは、JISローマ字を使う。		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>各文字集合と ISO-2022-JP の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>文字集合       </TH>
+      <TH>制御文字</TH>
+      <TH>1バイト目</TH>
+      <TH>2バイト目</TH></TR>
+    <TR>
+      <TD>US ASCII       </TD>
+      <TD>1B 28 42</TD>
+      <TD>20 ～ 7E </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JISローマ字    </TD>
+      <TD>1B 28 4A</TD>
+      <TD>20 ～ 7E </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0208:1978</TD>
+      <TD>1B 24 40</TD>
+      <TD>21 ～ 7E </TD>
+      <TD>21 ～ 7E </TD></TR>
+    <TR>
+      <TD>JIS X 0208:1983</TD>
+      <TD>1B 24 42</TD>
+      <TD>21 ～ 7E </TD>
+      <TD>21 ～ 7E </TD></TR></TBODY></TABLE><BR>
+  <UL>
+    <LI>US ASCII, JISローマ字を厳密に分類すれば、空白文字 20 は				 制御文字であり、図形文字である 21 ～ 7E 
+    とは異なる範疇にある。			 </LI>
+    <LI>JIS X 0208 には 1978年版と 1983年版があり、				字形に同一文字集合とみなせないほどの差があるが、
+    				 Shift_JIS などとデータを交換する場合は、				基本的に 1983年版が使われる。			 </LI></UL><BR></DD>
+  <DT>EUC-JP</DT>
+  <DD>
+  <P>JISローマ字、JISカタカナ、JIS X 0208、		 JIS X 0212 を 8bit = 1バイトの組み合わせで表現したもの。
+  		 1バイトから3バイトの組み合わせがある。		 JIS X 0212 は符号化として定義されているが、		実装上ではサポートしていない場合もある。
+  		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>各文字集合と EUC-JP の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>文字集合   </TH>
+      <TH>1バイト目</TH>
+      <TH>2バイト目</TH>
+      <TH>3バイト目</TH></TR>
+    <TR>
+      <TD>JISローマ字</TD>
+      <TD>20 ～ 7E </TD>
+      <TD></TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JISカタカナ    </TD>
+      <TD>8E       </TD>
+      <TD>A1 ～ DF </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0208 </TD>
+      <TD>A1 ～ FE </TD>
+      <TD>A1 ～ FE </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0212 </TD>
+      <TD>8F       </TD>
+      <TD>A1 ～ FE </TD>
+      <TD>A1 ～ FE </TD></TR></TBODY></TABLE><BR></DD>
+  <DT>EUC-JISX0213</DT>
+  <DD>
+  <P>JIS X 0213 を符号化したもの。JISローマ字とともに使われる。		 JISカタカナは使わない。		 JIS X 0213 は 94 * 94 
+  の領域を 2面分、持つので、		各面によって所要バイト数が違う。		 また、JIS X 0208 は JIS X 0213 の第1面に含まれる。
+		 </P>
+  <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+    <CAPTION>各文字集合と EUC-JISX0213 の関係</CAPTION>
+    <TBODY>
+    <TR>
+      <TH>文字集合      </TH>
+      <TH>1バイト目</TH>
+      <TH>2バイト目</TH>
+      <TH>3バイト目</TH></TR>
+    <TR>
+      <TD>JISローマ字   </TD>
+      <TD>20 ～ 7E </TD>
+      <TD></TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0213 1面</TD>
+      <TD>A1 ～ FE </TD>
+      <TD>A1 ～ FE </TD>
+      <TD></TD></TR>
+    <TR>
+      <TD>JIS X 0213 2面</TD>
+      <TD>8F       </TD>
+      <TD>A1 ～ FE </TD>
+      <TD>A1 ～ FE </TD></TR></TBODY></TABLE>
+  <P>JIS X 0213 を符号化するものとして、他に Shift_JISX0213、
+  		 ISO-2022-JISX013があるが、相互に数式変換可能なので、		 このページでは、EUC-JISX0213 を代表例として紹介した。
+  		 </P></DD></DL>
+<H4>参考サイト</H4>
+<UL>
+  <LI><A href="javascript:window.open( 'http://www.unicode.org/', '_top' );">The 
+  Unicode Standard</A>	 </LI>
+  <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/overview.htm', '_top' );">
+  		INTERNATIONAL REGISTER OF CODED CHARACTER SETS TO BE USED WITH ESCAPE 
+  SEQUENCES</A>	 
+  <UL>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/014.pdf', '_top' );">
+    			JIS X 0201 Roman</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/013.pdf', '_top' );">
+    			JIS X 0201 Katakana</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/042.pdf', '_top' );">
+    			JIS X 0208:1978</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/087.pdf', '_top' );">
+    			JIS X 0208:1983</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/159.pdf', '_top' );">
+    			JIS X 0212</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/233.pdf', '_top' );">
+    			JIS X 0213 plane 1</A>		 </LI>
+    <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www.itscj.ipsj.or.jp/ISO-IR/229.pdf', '_top' );">
+    			JIS X 0213 plane 2</A>		 </LI></UL></LI>
+  <LI><A style="text-decoration: line-through;" href="javascript:window.open( 'http://www-950.ibm.com/software/globalization/icu/demo/converters', '_top' );">
+  		ICU Converter Explorer</A>	 </LI>
+  <LI><A href="javascript:window.open( 'http://www.ietf.org/rfc/rfc1468.txt', '_top' );">
+  		Japanese Character Encoding for Internet Messages "ISO-2022-JP"</A>	 </LI>
+  <LI><A href="javascript:window.open( 'http://www.asahi-net.or.jp/~wq6k-yn/code/enc-x0213.html', '_top' );">
+  		JIS X 0213の代表的な符号化方式</A>	 </LI></UL></DIV>
+<HR>
+<!-- _______________________________________ --> 
+<UL>
+  <LI>2007/10/20 Added the button for combining characters</LI>
+  <LI>2005/03/04 Fist Edition.</LI></UL>
+<HR>
+<!-- _______________________________________ --> </BODY></HTML>

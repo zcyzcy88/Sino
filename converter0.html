@@ -1,0 +1,271 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0052)http://jgrammar.life.coocan.jp/ja/tools/tradkan0.htm -->
+<!--?xml version="1.0" encoding="UTF-8"?--><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+lang="ja" lang="ja" xml:lang="ja" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<META http-equiv="Content-Style-Type" content="text/css; charset=utf-8"> 
+<META http-equiv="Content-Script-Type" content="text/javascript; charset=utf8"> 
+<META name="keywords" content="漢字変換ツール"> <!-- $b_tradkan0 --><TITLE>漢字変換ツール 
+[JavaScript版]</TITLE><!-- $e_tradkan0 --> <!-- $b_tradkan1    <title>漢字変換ツール [JavaApplet版]</title>     $e_tradkan1 --> 
+<LINK href="converter_files/jacolumn.css" rel="stylesheet" type="text/css"> 
+<LINK href="converter_files/coltools.css" rel="stylesheet" type="text/css"> 
+<LINK href="../../css/ruby.css" rel="stylesheet" type="text/css"> <!-- $b_tradkan0 --> 
+<SCRIPT src="converter_files/javalike.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="converter_files/datajis.jsx" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="converter_files/datatrad.jsx" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="converter_files/tools.jsx" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="converter_files/tradkan.jsx" type="text/javascript"></SCRIPT>
+ <!-- $e_tradkan0 --> 
+<SCRIPT src="converter_files/cookie.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT src="converter_files/tradkan.js" type="text/javascript"></SCRIPT>
+ 
+<SCRIPT type="text/javascript">function onKeyPress() { /* TBD */ }</SCRIPT>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18860"></HEAD> 
+<BODY onload="javascript:getCookies( document.forms[0] );">
+<P><!-- $b_tradkan0 -->■[<A href="http://jgrammar.life.coocan.jp/ja/tools/biframe.htm#tradkan0.htm" 
+target="_top">フレーム環境</A>]<!-- $e_tradkan0 --> <!-- $b_tradkan1    ■[<a href="biframe.htm#tradkan1.htm" target="_top">フレーム環境</a>]     $e_tradkan1 --> 
+■[<A 
+href="http://jgrammar.life.coocan.jp/ja/tools/tradkan0.htm">JavaScript版</A>] 
+■[<A 
+href="http://jgrammar.life.coocan.jp/ja/tools/tradkan1.htm">JavaApplet版</A>] 
+■[<A href="http://jgrammar.life.coocan.jp/ja/index.htm" target="_top">目次</A>]  
+</P><!-- $b_tradkan0 -->
+<H3>漢字変換道具 [JavaScript版] (安定動作指向)</H3><!-- $e_tradkan0 --> <!-- $b_tradkan1    <h3>漢字変換道具 [JavaApplet版] (高速処理指向)</h3>     $e_tradkan1 --> 
+<DIV class="rule">
+<FORM action="no_action">
+<TABLE class="frame" border="0" frame="box" cellspacing="0" summary="TBD">
+  <TBODY>
+  <TR>
+    <TD rowspan="2"><SELECT name="Convtype"><OPTION>無変換</OPTION>		 <OPTION 
+        selected="selected">旧字体→新字体</OPTION>		 <OPTION>新字体→旧字体</OPTION>
+        		 <OPTION>新字体→繁体字</OPTION>		 <OPTION>新字体→簡体字</OPTION>
+        		 <OPTION>繁体字→新字体</OPTION>		 <OPTION>繁体字→簡体字</OPTION>
+        		 <OPTION>簡体字→新字体</OPTION>		 <OPTION>簡体字→繁体字</OPTION>	 </SELECT>
+	 <INPUT name="Refer" onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Convtype' );" type="button" value="参照">
+	 
+      <UL>
+        <LI><INPUT name="Kana" type="checkbox" value="">伝統的仮名遣いの候補に「`」か「+」を付加
+        		 </LI>
+        <LI><INPUT name="Jinmei" type="checkbox" value="">人名漢字に「^」を付加
+			 <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Jinmei' );" type="button" value="参照">
+        		 </LI>
+        <LI><INPUT name="Jouyou" type="checkbox" value="">表外漢字に「~」を付加、常用漢字を
+			 <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Jouyou' );" type="button" value="参照">
+        		 </LI>
+        <LI><INPUT name="Jisstd" type="checkbox" 
+        value="">JIS標準文字以外を数値表現<BR>JIS標準文字を			 <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Jisstd' );" type="button" value="参照">
+        		 </LI>
+        <LI><INPUT name="Multi" type="checkbox" checked="checked" 
+        value="">複数候補を表示		 </LI>
+        <LI><INPUT name="Kyuref" type="checkbox" value="">参照表示		 </LI>
+        <LI><INPUT name="Kyuusr" type="checkbox" value="">使用者定義
+			 <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:define();" type="button" value="定義">
+        			 <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyuusr' );" type="button" value="参照">
+        		 </LI></UL></TD>
+    <TD>
+      <TABLE border="1" frame="box" cellspacing="0" summary="TBD">
+        <COLGROUP>
+        <COL class="gothic" span="4">
+        <TBODY>
+        <TR>
+          <TD rowspan="2"></TD>
+          <TD colspan="2">常用漢字/人名漢字</TD>
+          <TD rowspan="2">表外漢字</TD></TR>
+        <TR>
+          <TD>政令定義</TD>
+          <TD>字典定義</TD></TR>
+        <TR>
+          <TD>JIS標準漢字</TD>
+          <TD><INPUT name="Kyu08j" type="checkbox" checked="checked" 
+            value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu08j' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu08n" type="checkbox" checked="checked" 
+            value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu08n' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu08g" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu08g' );" type="button" value="参照"></TD></TR>
+        <TR>
+          <TD>JIS補助漢字+α</TD>
+          <TD><INPUT name="Kyu12j" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu12j' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu12n" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu12n' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu12g" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu12g' );" type="button" value="参照"></TD></TR>
+        <TR>
+          <TD>Unicode漢字</TD>
+          <TD><INPUT name="Kyu21j" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu21j' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu21n" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu21n' );" type="button" value="参照"></TD>
+          <TD><INPUT name="Kyu21g" type="checkbox" 
+value="">使用<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyu21g' );" type="button" value="参照"></TD></TR>
+        <TR>
+          <TD colspan="4">
+            <UL>
+              <LI><INPUT name="Kyudup" type="checkbox" checked="checked" value="">略字と同形の正字 
+                   <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyudup' );" type="button" value="参照">
+              				 </LI>
+              <LI><INPUT name="Kyuexc" type="checkbox" value="">厳密な政令定義        
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyuexc' );" type="button" value="参照">
+              				 </LI>
+              <LI><INPUT name="Kyuvar" type="checkbox" 
+value="">異体字に推奨字形を付加<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:reference( this.form, 'Kyuvar' );" type="button" value="参照">
+              				 </LI></UL></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD align="right"><INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:setCookies( this.form );" type="button" value="設定保存"> 
+        <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:delCookies();" type="button" value="設定解除"> 
+    </TD></TR></TBODY></TABLE>
+<P>(注意 - 長文は変換に時間がかかります。HTML内のリンク・画像には非対応です。) <BR><TEXTAREA name="Area0" rows="4" cols="80">入力領域
+&lt;ul&gt;
+  &lt;li&gt;&lt;b&gt;国語&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;國語&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;b&gt;國语&lt;/b&gt;&lt;/li&gt;
+  &lt;li&gt;算数&lt;/li&gt;
+  &lt;li&gt;算數&lt;/li&gt;
+&lt;/ul&gt;
+</TEXTAREA> 
+<BR><INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:translate( this.form );" type="button" value="↓変換"> 
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:translateText( this.form );" type="button" value="↓TEXT出力"> 
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:translateHtml( this.form );" type="button" value="↓HTML出力"> 
+基底URL:<INPUT name="BaseURL" size="20" value="http://"> <INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:swap( this.form );" type="button" value="↓交換↑"> 
+<INPUT onkeypress="javascript:onKeyPress();" onclick="javascript:this.form.Area0.value='';" type="button" value="↑消去"> 
+<BR><TEXTAREA name="Area1" rows="4" cols="80">出力領域</TEXTAREA> 
+<BR><STRONG>TEXT出力時の属性:</STRONG> 文字サイズ: <SELECT 
+  name="Fsize"><OPTION>xx-large</OPTION>	 <OPTION>x-large</OPTION>
+  	 <OPTION>large</OPTION>	 <OPTION selected="selected">medium</OPTION>
+  	 <OPTION>small</OPTION>	 <OPTION>x-small</OPTION>	 <OPTION>xx-small</OPTION> 
+</SELECT> 文字色: <SELECT name="Fcolor"><OPTION 
+  selected="selected">black</OPTION>	 <OPTION>silver</OPTION>
+  	 <OPTION>gray</OPTION>	 <OPTION>white</OPTION>	 <OPTION>red</OPTION>
+  	 <OPTION>fuchsia</OPTION>	 <OPTION>lime</OPTION>	 <OPTION>yellow</OPTION>
+  	 <OPTION>blue</OPTION>	 <OPTION>aqua</OPTION> </SELECT> 背景色: <SELECT name="Bcolor"><OPTION>black</OPTION>
+  	 <OPTION>silver</OPTION>	 <OPTION>gray</OPTION>	 <OPTION 
+  selected="selected">white</OPTION>	 <OPTION>maroon</OPTION>
+  	 <OPTION>purple</OPTION>	 <OPTION>green</OPTION>	 <OPTION>olive</OPTION>
+  	 <OPTION>navy</OPTION>	 <OPTION>teal</OPTION> </SELECT> <INPUT name="Direct" 
+type="radio" value="">横書き <INPUT name="Direct" type="radio" value="">縦書き <!-- <br />文字フォント:<input name="Fface" size=16 value="MS PGothic"> --> 
+</P></FORM></DIV>
+<HR>
+
+<H3>解説</H3>
+<DIV class="rule">
+<OL>
+  <LI>使用法	 
+  <OL>
+    <LI>上部の文字領域に任意の文字列を入力し、好みの設定を選び、			好みのボタンを押すことで、下部の文字領域に変換結果が出力されます。
+  		 </LI></OL></LI>
+  <LI>ボタンの説明	 
+  <OL>
+    <LI><STRONG>[↓変換]:</STRONG> 上部の文字領域の内容を変換して、			下部の文字領域に出力します。		 </LI>
+    <LI><STRONG>[↓TEXT出力]:</STRONG> 上部の文字領域の内容を変換して、			専門領域に TEXTとして出力します。			 この 
+    TEXT には一部の HTMLタグも使えます。			 (あまり複雑な設定をするとブラウザが不安定になります。)		 </LI>
+    <LI><STRONG>[↓HTML出力]:</STRONG> 上部の文字領域にある HTMLのソースを			 変換し、専門領域に整形して出力します。
+    			 ただし、HTMLのリンク先や画像に相対位置が指定されている場合は正しく整形されません。			 そのほか、複雑なスタイルシートにも未対応です。
+    			出力結果を参照するための目安として利用してください。			隣にある基底URLの文字領域にソース位置を指定すると精度が上がります。		 </LI>
+    <LI><STRONG>[↑交換↓]:</STRONG> 上部の文字領域の内容と下部の内容を交換します。
+    			新字体→繁体字→簡体字のように二段階で変換を行う場合に便利です。		 </LI>
+    <LI><STRONG>[↑消去]:</STRONG> 上部の文字領域の内容を消去します。</LI>
+    <LI><STRONG>[参照]:</STRONG> 各項目に該当する文字を別ウィンドウで表示します。</LI>
+    <LI><STRONG>[設定保存]:</STRONG> 各種設定を保存し、			 ブラウザにクッキーとして登録します。		 </LI>
+    <LI><STRONG>[設定解除]:</STRONG> 保存した設定を解除します。			 ブラウザの次回起動時に反映されます。
+  		 </LI></OL></LI>
+  <LI>文字領域の説明	 
+  <OL>
+    <LI><STRONG>上部の文字領域:</STRONG> 変換前の文字を入力します。</LI>
+    <LI><STRONG>下部の文字領域:</STRONG> 変換後の文字を出力します。</LI>
+    <LI><STRONG>基底URL:</STRONG> HTML出力時に利用される基底URLです。			 ここに、実際の 
+    HTMLソースがある場所を指定すると、			画像やリンク先が正しく認識される可能性が高まります。		 </LI></OL></LI>
+  <LI>変換経路の設定	 
+  <OL>
+    <LI><STRONG>無変換:</STRONG>漢字の変換は行なわず、属性の付加だけ行ないます。</LI>
+    <LI><STRONG>旧字体→新字体:</STRONG>当用漢字制定以前の字体から新字体に変換します。
+    			当用漢字制定以前の字体は正字体とも呼ばれます。		 </LI>
+    <LI><STRONG>新字体→旧字体:</STRONG>新字体から旧字体に変換に変換します。</LI>
+    <LI><STRONG>新字体→繁体字:</STRONG>新字体から台湾で使用される繁体字に変換します。
+    			繁体字は、正字体や旧字体とほぼ同じ字形です。この道具では、「新字体→旧字体」と同じ変換処理を行います。		 </LI>
+    <LI><STRONG>新字体→簡体字:</STRONG>新字体から中国で使用される簡体字に変換します。</LI>
+    <LI><STRONG>繁体字→新字体:</STRONG>繁体字から新字体に変換します。
+    			 この道具では、「旧字体→新字体」と同じ変換処理を行います。		 </LI>
+    <LI><STRONG>繁体字→簡体字:</STRONG>繁体字から簡体字に変換します。</LI>
+    <LI><STRONG>簡体字→新字体:</STRONG>簡体字から新字体に変換します。</LI>
+    <LI><STRONG>簡体字→繁体字:</STRONG>簡体字から繁体字に変換します。</LI></OL></LI>
+  <LI>共通の変換設定	 
+  <OL>
+    <LI><STRONG>複数候補を表示:</STRONG> 略字体や簡体字には、			複数の正字に対応するものがあります。
+    			 それらの候補を列挙して表示します。		 </LI>
+    <LI><STRONG>参照表示:</STRONG> 変換された漢字がどの表によるものか注釈をつけます。</LI>
+    <LI><STRONG>使用者定義:</STRONG> 使用者が定義する変換表です。</LI>
+    <LI><STRONG>JIS標準文字以外を数値表現:</STRONG>			 貼り付ける対象のエディターが Unicode 
+    に対応していない場合に使います。		 </LI></OL></LI>
+  <LI>正字体、略字体に関係する属性設定	 
+  <OL>
+    <LI><STRONG>伝統的仮名遣いの候補に「`」か「+」を付加:</STRONG> 
+    			伝統的仮名遣いの候補になる仮名「いうえおじずっゃゅょゎわ」に印をつけます。「う」には「+」を
+    			それ以外は、「`」をつけます。(字音仮名遣いの「かが」は候補から外しました。)		 </LI>
+    <LI><STRONG>人名漢字に「^」を付加:</STRONG> 人名漢字に印をつけます(平成１６年改正に対応)。</LI>
+    <LI><STRONG>表外漢字に「~」を付加:</STRONG> 常用漢字以外の漢字に印をつけます。</LI>
+    <LI><STRONG>異体字に推奨字形を付加:</STRONG> 異体字に推奨する字形を注記します(参照元: 漢字源)。</LI></OL></LI>
+  <LI>変換文字種の説明	 
+  <OL>
+    <LI><STRONG>JIS標準漢字:</STRONG> JIS X 0208 で定義された正字です。</LI>
+    <LI><STRONG>JIS補助漢字+α:</STRONG> JIS X 0212 と Windows拡張漢字で定義された正字です。</LI>
+    <LI><STRONG>Unicode漢字:</STRONG> 上記以外で、 Unicode で定義された正字です。</LI>
+    <LI><STRONG>政令定義:</STRONG> 常用漢字表で旧字体として定義された正字です。(*1)</LI>
+    <LI><STRONG>字典定義:</STRONG> 上記以外で、通用の漢字字典で旧字体として定義された正字です。(*2)(*3)</LI>
+    <LI><STRONG>表外漢字:</STRONG> 常用漢字表外で、拡張新字体に関連する正字です。(*2)</LI>
+    <LI><STRONG>略字と同形の正字:</STRONG> 略字体のなかにある正字と同形異義の漢字です(参照元:角川小字典 - 日本語の表記 
+    ISBN:4040629000)。</LI>
+    <LI><STRONG>厳密な政令定義:</STRONG> 常用漢字表では旧字体として定義されているが、
+    			通用の漢字字典では異体字として扱われている正字です。		 </LI></OL>
+  <P>(*1)平成１６年改正で、人名用漢字の正字は、政令ですべて異体字扱いになったので、
+  		従来ここに分類されていた人名用漢字の正字は、政令定義から字典定義に変更しました。		 </P>
+  <P>(*2)字典定義と拡張新字体に関する定義は次の資料を参考にしています。
+  			「漢字源」、「表外漢字字体表における簡易慣用字体」「JIS83改正で変更された字体」。			 ただし、Unicode 
+  でも区別できない微妙な字体差は対象外です。		 </P>
+  <P>(*3)常用漢字のうち「剝」「塡」「頰」「𠮟」は情報機器での利便性を優先して「剥」「填」「頬」「叱」の字体を使用しています。
+  			 このなかで、「剝」「塡」「頰」と「剥」「填」「頬」の3組は字典定義の新旧字体としてそれぞれ変換対象にしています。		 </P></LI>
+  <LI>TEXT出力時の属性	 
+  <OL>
+    <LI><STRONG>文字サイズ:</STRONG> 文字サイズを設定します。</LI>
+    <LI><STRONG>文字色:</STRONG> 文字の色を設定します。</LI>
+    <LI><STRONG>背景色:</STRONG> 背景の色を設定します．</LI>
+    <LI><STRONG>横書き/縦書き:</STRONG> 文字の方向を指定します。(MS-IEのみ対応)</LI><!-- <li><strong>文字フォント:</strong> フォント名を指定します。</li> -->
+  	 </OL></LI></OL></DIV>
+<HR>
+
+<UL>
+  <LI>2011/07/12 Supported new "Jouyou-Kanji" 2010.</LI>
+  <LI>2006/10/16 Change the classification. Append the menu "Kyuujitai" for 
+  usability.</LI>
+  <LI>2006/09/19 Move the traditional Kanji of person names into outside of 
+  cabinet definitions due to 2004 act.</LI>
+  <LI>2006/04/21 Support Kanji for human names on 2004 act.</LI>
+  <LI>2005/12/05 Perfect compatible between Javascript and Appet.</LI>
+  <LI>2005/10/01 The applet supports Netscape7 and Firefox as well as IE5.</LI>
+  <LI>2005/02/27 Change the style sheet.</LI>
+  <LI>2004/10/27 Applet version</LI>
+  <LI>2004/10/16 Fix a bug of numeric entities error for latin-1</LI><!-- <li>2004/07/15 Add a setting of font faces</li> -->
+	 
+  <LI>2004/06/19 Add the user dictionary</LI>
+  <LI>2004/05/28 Add discriptions</LI>
+  <LI>2004/05/22 Add functions to customize text output</LI>
+  <LI>2004/05/15 Add a button for exchanging texts</LI>
+  <LI>2004/05/06 Add a button for converting texts</LI>
+  <LI>2004/05/02 A frame version</LI>
+  <LI>2004/04/25 Add Simplified to Traditional Table</LI>
+  <LI>2004/04/17 Fist Edition</LI></UL>
+<HR>
+<!-- $b_tradkan1    
+<applet name="Converter" id="Converter" width="0" height="0" codebase="../../jar" archive="JsxTradition.jar" code="JsxTradition.class" mayscript ="mayscript">
+■[<a href="tradkan0.htm">JavaScript版</a>] (安定動作志向)
+</applet>
+     $e_tradkan1 --> 
+</BODY></HTML>

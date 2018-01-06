@@ -1,0 +1,3 @@
+- [繁体字 簡体字 新字体 対照表](https://zcyzcy88.github.io/Sino/table.html)
+- [漢字変換道具](https://zcyzcy88.github.io/Sino/converter0.html)
+- [文字符合値参照道具](https://zcyzcy88.github.io/Sino/validator.html)
